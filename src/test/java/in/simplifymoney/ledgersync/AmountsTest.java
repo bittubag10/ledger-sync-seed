@@ -14,6 +14,13 @@ import org.junit.jupiter.api.Test;
 class AmountsTest {
 
     @Test
+    void readsWholeRupeeTransactionWithoutDecimal() {
+        assertEquals(new BigDecimal("5.00"),
+                Amounts.first("Rs.5 debited from a/c **4821 on 04-07-26 at "
+                        + "07:19 to UPI/WATER CAN. Avl Bal: Rs.92,213.10."));
+    }
+
+    @Test
     void readsRupeesWithADot() {
         assertEquals(new BigDecimal("2499.50"),
                 Amounts.first("Rs.2,499.50 debited from a/c **4821 on 04-07-26 at "
