@@ -19,6 +19,13 @@ class AmountsTest {
                 Amounts.first("Rs.5 debited from a/c **4821 on 04-07-26 at "
                         + "07:19 to UPI/WATER CAN. Avl Bal: Rs.92,213.10."));
     }
+    @Test
+    void readsWholeRupeeInrTransaction() {
+        assertEquals(new BigDecimal("18000.00"),
+                Amounts.first("Dear Customer, Acct XX9075 is credited with INR 18,000 "
+                        + "on 01/07/2026 21:14. Info: NEFT INWARD SELF. "
+                        + "Avl Bal Rs.49,882.25"));
+    }
 
     @Test
     void readsRupeesWithADot() {
